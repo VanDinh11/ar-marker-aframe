@@ -17,14 +17,10 @@ AFRAME.registerComponent('button', {
     }
 });
 
-// AFRAME.registerComponent('clickhandletest', {
-//     init: function() {
-//         document.getElementById('boxId', function() {
-//             console.log('xxx');
-//         })
-//     }
-// })
-
-document.getElementById('boxId', function() {
-    console.log('xxx');
+AFRAME.registerComponent('clickhandletest', {
+    init: function() {
+        document.querySelector('#boxId').addEventListener('click', function () {
+            console.log('xxx');
+        })
+    }
 })
