@@ -7,12 +7,12 @@ AFRAME.registerComponent('button', {
         var z = gltf.getAttribute('scale').z;
 
         // every click, we make our model grow in size :)
-        gltf.addEventListener('click', function (ev, target) {
+        gltf.addEventListener('touchend', function (ev, target) {
             console.log(gltf.getAttribute('scale'));
             gltf.setAttribute('scale', x + " " + y + " " + z);
-            x += 0.1;
-            y += 0.1;
-            z += 0.1;
+            x += 1;
+            y += 1;
+            z += 1;
         });
     }
 });
