@@ -16,3 +16,9 @@ AFRAME.registerComponent('button', {
         });
     }
 });
+
+AFRAME.registerComponent('clickhandletest', {
+    init: function() {
+        console.log('xxx');
+    }
+})
