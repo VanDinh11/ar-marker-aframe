@@ -1,4 +1,4 @@
-AFRAME.registerComponent('button', {
+AFRAME.registerComponent('buttonMarkerHandle', {
     schema: {
         default: ''
     },
@@ -23,16 +23,21 @@ AFRAME.registerComponent('button', {
         var x = box.getAttribute('scale').x;
         var y = box.getAttribute('scale').y;
         var z = box.getAttribute('scale').z;
-        box.addEventListener('click', function () {
-            x += 0.1;
-            y += 0.1;
-            z += 0.1;
-            box.setAttribute('scale', x + " " + y + " " + z);
-        })
+        x += 0.1;
+        y += 0.1;
+        z += 0.1;
+        box.setAttribute('scale', x + " " + y + " " + z);
     },
     init: function () {
         this.boundClickHandler = this.clickHandler.bind(this);
         this.el.addEventListener('click', this.boundClickHandler);
+
+        const scene = document.querySelector('a-scene');
+        let node = document.createElement('a-box');
+        node.setAttribute('position', '0 2 -10');
+        node.setAttribute('rotation', '0 45 45');
+        node.setAttribute('scale', '0.5 0.5 0.5');
+        scene.appendChild(node);
     },
     remove: function () {
         this.el.removeEventListener('click', this.boundClickHandler);
@@ -40,7 +45,7 @@ AFRAME.registerComponent('button', {
 });
 
 AFRAME.registerComponent('clickhandletest', {
-    init: function() {
+    init: function () {
         console.log('xxx');
         const box = document.querySelector('#boxId');
         var x = box.getAttribute('scale').x;
@@ -54,7 +59,7 @@ AFRAME.registerComponent('clickhandletest', {
         })
     }
 })
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const scene = document.querySelector('a-scene');
     // scene.addEventListener('loaded', function () {
     //     scene.addEventListener('click', function() {
@@ -66,6 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //         node.setAttribute('scale', '0.5 0.5 0.5');
     //         scene.appendChild(node);
     //     })
-        
+
     // })
 })
