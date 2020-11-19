@@ -41,13 +41,15 @@
     <a-scene embedded vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true;"
         arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; trackingMethod: best;">
 
-        <a-box color="red" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-box>
-
         <a-assets>
             <a-asset-item id="animated-asset"
                 src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf">
             </a-asset-item>
+            <!-- this can be applied for texture -->
+            <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg"> 
         </a-assets>
+
+        <a-box src="#boxTexture" color="red" position="0 2 -5" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box>
 
         <a-marker type='barcode' value='7'>
             <a-box position='0 0.5 0' color="yellow"></a-box>
