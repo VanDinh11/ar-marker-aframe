@@ -39,7 +39,7 @@
     </div>
     <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
     <a-scene embedded vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true;"
-        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; trackingMethod: best;">
+        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; trackingMethod: best;" cursor="rayOrigin: mouse">
 
         <a-assets>
             <a-asset-item id="animated-asset"
@@ -49,7 +49,10 @@
             <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg"> 
         </a-assets>
 
-        <a-box src="#boxTexture" color="red" position="0 2 -10" rotation="0 45 45" scale="0.5 0.5 0.5" clickhandletest emitevents="true" cursor="rayOrigin: mouse" id="boxId"></a-box>
+        <!-- <a-entity event-set__${id}="_event: ${eventName}; ${someProperty}: ${toValue}"> -->
+
+
+        <a-box src="#boxTexture" color="red" position="0 2 -10" rotation="0 45 45" scale="0.5 0.5 0.5" id="boxId" clickhandletest></a-box>
 
         <a-marker type='barcode' value='7'>
             <a-box position='0 0.5 0' color="yellow"></a-box>
