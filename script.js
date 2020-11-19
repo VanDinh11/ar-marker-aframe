@@ -19,6 +19,8 @@ AFRAME.registerComponent('button', {
 
 AFRAME.registerComponent('clickhandletest', {
     init: function() {
-        console.log('xxx');
+        document.getElementById('boxId', function() {
+            console.log('xxx');
+        })
     }
 })
