@@ -27,22 +27,41 @@
     </style>
 </head>
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-<!-- <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script> -->
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-<script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+<!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<!-- <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script> -->
 <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
 
 <script src="./script.js"></script>
 
 <body style='margin : 0px; overflow: hidden;'>
-    <div class="arjs-loader">
+    <!-- <div class="arjs-loader">
         <div>Loading, please wait...</div>
-    </div>
+    </div> -->
     <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
     <a-scene embedded vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true;"
-        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; trackingMethod: best;">
-        <a-box src="#boxTexture" color="red" position="0 2 -10" rotation="0 45 45" scale="0.5 0.5 0.5">
+        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; trackingMethod: best;" cursor="rayOrigin: mouse">
+
+        <a-entity camera="userHeight: 1.6" look-controls mouse-cursor>
+            <!-- look-controls mouse-cursor -->
+            <!-- <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat">
+            </a-entity> -->
+            <a-cursor fuse="true" color="yellow"></a-cursor>
+
+            <!-- <a-entity cursor raycaster="objects: .boxClass; far: 20; interval: 1000;"></a-entity> -->
+        </a-entity>
+
+        <!-- <a-entity id="camera" camera="userHeight: 1.6" look-controls cursor="rayOrigin: mouse"></a-entity> -->
+        
+        <a-box event-set__click="_event: click; color: green" boxhandle class="boxClass" id="boxTestClick" src="#boxTexture" color="red" position="0 0 -10"
+            rotation="0 45 45" scale="0.5 0.5 0.5">
         </a-box>
+        <a-box event-set__click="_event: click; color: green" src="#boxTexture" color="red" position="1 1 -10"
+            rotation="0 45 45" scale="0.5 0.5 0.5">
+        </a-box>
+
 
         <a-assets>
             <a-asset-item id="animated-asset"
@@ -57,9 +76,13 @@
         <!-- <a-box src="#boxTexture" color="red" position="0 2 -10" rotation="0 45 45" scale="0.5 0.5 0.5">
         </a-box> -->
 
-        <a-marker buttonMarkerHandle type='barcode' value='7' emitevents="true" cursor="fuse: false; rayOrigin: mouse" id="markerId">
+        <a-marker button-marker-handle type='barcode' value='7' emitevents="true" cursor="rayOrigin: mouse"
+            id="markerId">
             <!-- <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickableBox; useWorldCoordinates: true;"></a-entity> -->
-            <a-box position='0 0.5 0' color="yellow" class="clickableBox" id="boxId" scale="0.5 0.5 0.5"></a-box>
+            <!-- <a-box position='0 0.5 0' color="yellow" class="clickableBox" id="boxId" scale="0.5 0.5 0.5"></a-box> -->
+            <a-entity class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset" scale="2 2 2"
+                rotation="0 -90 0">
+            </a-entity>
         </a-marker>
 
         <a-marker preset='custom' type='pattern' url='./patt.hiro'>
@@ -86,16 +109,18 @@
                 scale="5 5 5" position="100 -100 0" rotation="-90 0 0">
             </a-entity>
         </a-nft>
-
-        <a-entity camera></a-entity>
         <!-- <a-camera><a-cursor></a-cursor></a-camera> -->
     </a-scene>
 
     <script>
-        // document.querySelector('#boxId').addEventListener('click', function () {
+        // document.querySelector('#boxTestClick').addEventListener('click', function () {
         //     console.log('xxx');
         // })
     </script>
 </body>
 
 </html>
+
+<!-- 
+    position co the relative duoc giong nhu trong css
+ -->
