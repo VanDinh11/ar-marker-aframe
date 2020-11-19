@@ -19,8 +19,15 @@ AFRAME.registerComponent('button', {
 
 AFRAME.registerComponent('clickhandletest', {
     init: function() {
-        document.querySelector('#boxId').addEventListener('click', function () {
-            console.log('xxx');
+        const box = document.querySelector('#boxId');
+        var x = box.getAttribute('scale').x;
+        var y = box.getAttribute('scale').y;
+        var z = box.getAttribute('scale').z;
+        box.addEventListener('click', function () {
+            x += 0.1;
+            y += 0.1;
+            z += 0.1;
+            box.setAttribute('scale', x + " " + y + " " + z);
         })
     }
 })
