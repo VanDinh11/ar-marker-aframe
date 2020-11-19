@@ -7,7 +7,7 @@ AFRAME.registerComponent('button', {
         var z = gltf.getAttribute('scale').z;
 
         // every click, we make our model grow in size :)
-        gltf.addEventListener('touchend', function (ev, target) {
+        gltf.addEventListener('click', function (ev, target) {
             console.log(gltf.getAttribute('scale'));
             gltf.setAttribute('scale', x + " " + y + " " + z);
             x += 1;
