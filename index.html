@@ -24,12 +24,20 @@
             font-size: 1.25em;
             color: white;
         }
+        #wrap-a-scene{
+            width: 100vw;
+            height: 100vh;
+        }
+        a-scene{
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <!-- <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script> -->
-<!-- <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script> -->
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+<script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+<!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
 <script src="./script.js" defer></script>
@@ -38,58 +46,64 @@
     <div class="arjs-loader">
         <div>Loading, please wait...</div>
     </div>
-    <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
-    <a-scene vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true;"
-        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; trackingMethod: best;">
-        <a-camera wasd-controls-enabled="false" look-controls mouse-cursor>
-            <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .boxClass;"></a-entity>
-        </a-camera>
-        <!-- <a-entity camera></a-entity> -->
+    <div id="wrap-a-scene">
+        <!-- embedded -->
+        <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+        <a-scene vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true;"
+            arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; trackingMethod: best;"
+            
+        >
+            <a-camera wasd-controls-enabled="false" look-controls mouse-cursor position="0 0 0">
+                <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .boxClass;"></a-entity>
+            </a-camera>
+            <!-- <a-entity camera></a-entity> -->
 
-        <!-- <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .boxClass;"></a-entity> -->
-        <a-box class="boxClass" id="boxTestClick" src="#boxTexture" color="red" position="0 0 -10" rotation="0 45 45"
-            scale="0.5 0.5 0.5">
-        </a-box>
+            <!-- <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .boxClass;"></a-entity> -->
+            <a-box class="boxClass" id="boxTestClick" src="#boxTexture" color="red" position="0 0 -10"
+                rotation="0 45 45" scale="0.5 0.5 0.5">
+            </a-box>
 
-        <a-assets>
-            <a-asset-item id="animated-asset"
-                src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf">
-            </a-asset-item>
-            <!-- this can be applied for texture -->
-            <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
-        </a-assets>
+            <a-assets>
+                <a-asset-item id="animated-asset"
+                    src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf">
+                </a-asset-item>
+                <!-- this can be applied for texture -->
+                <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
+            </a-assets>
 
-        <a-marker-camera type='barcode' value='7' id="markerId">
-            <a-entity class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset" scale="2 2 2"
-                rotation="0 -90 0">
-            </a-entity>
-        </a-marker-camera>
+            <a-marker-camera type='barcode' value='7' id="markerId">
+                <a-entity class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset" scale="2 2 2"
+                    rotation="0 -90 0">
+                </a-entity>
+            </a-marker-camera>
 
-        <a-marker-camera preset='custom' type='pattern' url='./patt.hiro'>
-            <a-box position='0 0.5 0' color="red"></a-box>
-        </a-marker-camera>
+            <a-marker-camera preset='custom' type='pattern' url='./patt.hiro'>
+                <a-box position='0 0.5 0' color="red"></a-box>
+            </a-marker-camera>
 
-        <a-marker-camera preset='custom' type='pattern' url='./pattern-p1.patt'>
-            <a-box position='0 0.5 0' color="green"></a-box>
-        </a-marker-camera>
+            <a-marker-camera preset='custom' type='pattern' url='./pattern-p1.patt'>
+                <a-box position='0 0.5 0' color="green"></a-box>
+            </a-marker-camera>
 
-        <a-marker-camera id="animated-marker" type='barcode' value='6'>
-            <a-entity animation-mixer gltf-model="#animated-asset" scale="2 2 2" rotation="0 -90 0">
-            </a-entity>
-        </a-marker-camera>
+            <a-marker-camera id="animated-marker" type='barcode' value='6'>
+                <a-entity animation-mixer gltf-model="#animated-asset" scale="2 2 2" rotation="0 -90 0">
+                </a-entity>
+            </a-marker-camera>
 
-        <a-nft type="nft"
-            url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
-            smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5" button-marker-handle
-            emitevents="true">
-            <!-- important for addEventListener('click'). Notice the '.clickable'-->
-            <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable; useWorldCoordinates: true;"></a-entity>
-            <a-entity id="dinoId" class="clickable"
-                gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-                scale="5 5 5" position="100 -100 0" rotation="-90 0 0">
-            </a-entity>
-        </a-nft>
-    </a-scene>
+            <a-nft type="nft"
+                url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+                smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5" button-marker-handle
+                emitevents="true">
+                <!-- important for addEventListener('click'). Notice the '.clickable'-->
+                <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable; useWorldCoordinates: true;">
+                </a-entity>
+                <a-entity id="dinoId" class="clickable"
+                    gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+                    scale="5 5 5" position="100 -100 0" rotation="-90 0 0">
+                </a-entity>
+            </a-nft>
+        </a-scene>
+    </div>
 </body>
 
 </html>

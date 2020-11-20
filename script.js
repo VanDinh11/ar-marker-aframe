@@ -17,7 +17,6 @@ AFRAME.registerComponent('boxhandle', {
 
 AFRAME.registerComponent('button-marker-handle', {
     init: function () {
-        console.log('button clicked!');
         const gltf = document.querySelector('#dinoId');
         var x = gltf.getAttribute('scale').x;
         var y = gltf.getAttribute('scale').y;
