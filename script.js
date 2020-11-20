@@ -86,8 +86,7 @@ AFRAME.registerComponent('clickhandletest', {
         const aEntity = document.querySelector('#modelId');
 
         markerId.addEventListener('click', function() {
-            console.log('xxx');
-            alert('clicked!');
+            alert('clicked!'); // work! 
             const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
             if (aEntity && intersectedElement === aEntity) {
                 const scale = aEntity.getAttribute('scale');
