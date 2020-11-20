@@ -1,8 +1,8 @@
 const Abox = document.querySelector('#boxTestClick');
-Abox.addEventListener('click', function() {
+Abox.addEventListener('click', function () {
     console.log('xxx');
 
-        this.setAttribute('color', 'blue');
+    this.setAttribute('color', 'blue');
 })
 
 AFRAME.registerComponent('boxhandle', {
@@ -17,12 +17,19 @@ AFRAME.registerComponent('boxhandle', {
 
 AFRAME.registerComponent('button-marker-handle', {
     init: function () {
-        const markerId = document.querySelector("#markerId");
-        const modelId = document.querySelector("#modelId");
+        console.log('button clicked!');
+        const gltf = document.querySelector('#dinoId');
+        var x = gltf.getAttribute('scale').x;
+        var y = gltf.getAttribute('scale').y;
+        var z = gltf.getAttribute('scale').z;
 
         // every click, we make our model grow in size :)
-        markerId.addEventListener('click', function (ev, target) {
-            console.log('xxx');
+        gltf.addEventListener('click', function (ev, target) {
+            console.log(gltf.getAttribute('scale'));
+            gltf.setAttribute('scale', x + " " + y + " " + z);
+            x += 1;
+            y += 1;
+            z += 1;
         });
     }
 })
