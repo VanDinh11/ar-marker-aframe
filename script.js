@@ -1,3 +1,10 @@
+const Abox = document.querySelector('#boxTestClick');
+Abox.addEventListener('click', function() {
+    console.log('xxx');
+
+        this.setAttribute('color', 'blue');
+})
+
 AFRAME.registerComponent('boxhandle', {
     init: function () {
         console.log('aaaa');
@@ -83,18 +90,18 @@ AFRAME.registerComponent('clickhandletest', {
     }
 })
 document.addEventListener('DOMContentLoaded', function () {
-    const scene = document.querySelector('a-scene');
-    scene.addEventListener('click', function(e) {
-        // <a-box src="#boxTexture" color="red" position="0 2 -10" rotation="0 45 45" scale="0.5 0.5 0.5">
-        // </a-box>
-        console.log(e);
-        // - ( e.clientY / window.innerHeight ) * 2 - 1
-        let x = e.clientX - (window.innerWidth / 2);
-        let y = e.clientX - (window.innerHeight / 2);
-        let node = document.createElement('a-box');
-        node.setAttribute('position', x + ' ' + y + ' ' + '-10');
-        node.setAttribute('rotation', '0 45 45');
-        node.setAttribute('scale', '0.5 0.5 0.5');
-        scene.appendChild(node);
-    })
+    // const scene = document.querySelector('a-scene');
+    // scene.addEventListener('click', function(e) {
+    //     // <a-box src="#boxTexture" color="red" position="0 2 -10" rotation="0 45 45" scale="0.5 0.5 0.5">
+    //     // </a-box>
+    //     console.log(e);
+    //     // - ( e.clientY / window.innerHeight ) * 2 - 1
+    //     let x = e.clientX - (window.innerWidth / 2);
+    //     let y = e.clientX - (window.innerHeight / 2);
+    //     let node = document.createElement('a-box');
+    //     node.setAttribute('position', x + ' ' + y + ' ' + '-10');
+    //     node.setAttribute('rotation', '0 45 45');
+    //     node.setAttribute('scale', '0.5 0.5 0.5');
+    //     scene.appendChild(node);
+    // })
 })
