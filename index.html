@@ -25,14 +25,23 @@
             color: white;
         }
 
-        /* #wrap-a-scene{
-            width: 100vw;
-            height: 100vh;
+        .loader{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: #3333333d;
+            z-index: 99;
         }
-        a-scene{
-            width: 100%;
-            height: 100%;
-        } */
+        .loader.done{
+            display: none;
+        }
+        .loader p{
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+        }
     </style>
 </head>
 <!-- BE CAREFULL: click event on version 1.0.x does't work -->
@@ -47,7 +56,7 @@
             console.log('loading...');
             //  let loader = document.querySelector("#loadingEl")
             this.el.addEventListener('model-loaded', e => {
-                alert('loaded!');
+                document.querySelector('.loader').classList.add('done');
             })
         }
     })
@@ -55,6 +64,9 @@
 <script src="./script.js" defer></script>
 
 <body style='margin : 0px; overflow: hidden;'>
+    <div class="loader">
+        <p>Loading...</p>
+    </div>
     <!-- embedded -->
     <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
     <a-scene vr-mode-ui="enabled: false"
