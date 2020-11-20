@@ -41,26 +41,18 @@
     <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
     <a-scene vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true;"
     arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; trackingMethod: best;">
-
         <a-camera wasd-controls-enabled="false" look-controls mouse-cursor>
-
-
             <!-- Entity with cursor component and rayOrigin: mouse -->
             <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .boxClass;">
                 <!-- Add any cursor geometry here -->
             </a-entity>
-
-
             <!-- Old Cursor -->
             <!-- <a-cursor fuse="true" raycaster="objects: .clickable" fuse-timeout="1000"></a-cursor> -->
-
         </a-camera>
-
 
         <a-box class="boxClass" id="boxTestClick" src="#boxTexture" color="red" position="0 0 -10" rotation="0 45 45"
             scale="0.5 0.5 0.5">
         </a-box>
-
 
         <a-assets>
             <a-asset-item id="animated-asset"
@@ -69,11 +61,6 @@
             <!-- this can be applied for texture -->
             <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
         </a-assets>
-
-        <!-- <a-entity event-set__${id}="_event: ${eventName}; ${someProperty}: ${toValue}"> -->
-
-        <!-- <a-box src="#boxTexture" color="red" position="0 2 -10" rotation="0 45 45" scale="0.5 0.5 0.5">
-        </a-box> -->
 
         <a-marker type='barcode' value='7' id="markerId">
             <!-- <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickableBox; useWorldCoordinates: true;"></a-entity> -->
@@ -107,14 +94,7 @@
                 scale="5 5 5" position="100 -100 0" rotation="-90 0 0">
             </a-entity>
         </a-nft>
-        <!-- <a-camera><a-cursor></a-cursor></a-camera> -->
     </a-scene>
-
-    <script>
-        // document.querySelector('#boxTestClick').addEventListener('click', function () {
-        //     console.log('xxx');
-        // })
-    </script>
 </body>
 
 </html>
