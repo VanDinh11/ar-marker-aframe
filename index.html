@@ -41,6 +41,17 @@
 <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
+<script>
+    AFRAME.registerComponent('loader', {
+        init: function () {
+            console.log('loading...');
+            //  let loader = document.querySelector("#loadingEl")
+            this.el.addEventListener('model-loaded', e => {
+                alert('loaded!');
+            })
+        }
+    })
+</script>
 <script src="./script.js" defer></script>
 
 <body style='margin : 0px; overflow: hidden;'>
@@ -52,7 +63,12 @@
             <a-asset-item id="animated-asset-7"
                 src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf">
             </a-asset-item>
-            <a-asset-item id="animated-asset-6" src="https://raw.githubusercontent.com/VanDinh11/public-models/master/matilda/scene.gltf"></a-asset-item>
+            <a-asset-item id="animated-asset-6"
+                src="https://raw.githubusercontent.com/VanDinh11/public-models/master/matilda/scene.gltf">
+            </a-asset-item>
+            <a-asset-item id="animated-asset-hiro"
+                src="https://raw.githubusercontent.com/VanDinh11/public-models/master/scifi_girl_v.01/scene.gltf">
+            </a-asset-item>
             <!-- this can be applied for texture -->
             <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
         </a-assets>
@@ -64,7 +80,7 @@
         </a-marker>
 
         <a-marker preset='custom' type='pattern' url='./patt.hiro'>
-            <a-box position='0 0.5 0' color="red"></a-box>
+            <a-entity loader animation-mixer gltf-model="#animated-asset-hiro" scale="2 2 2" rotation="0 -90 0"></a-entity>
         </a-marker>
 
         <a-marker preset='custom' type='pattern' url='./pattern-p1.patt'>
