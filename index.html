@@ -51,12 +51,24 @@
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
 <script>
-    AFRAME.registerComponent('loader', {
+    AFRAME.registerComponent('loader-7', {
         init: function () {
-            console.log('loading...');
-            //  let loader = document.querySelector("#loadingEl")
             this.el.addEventListener('model-loaded', e => {
-                document.querySelector('.loader').classList.add('done');
+                document.querySelector('.loader-7').classList.add('done');
+            })
+        }
+    })
+    AFRAME.registerComponent('loader-6', {
+        init: function () {
+            this.el.addEventListener('model-loaded', e => {
+                document.querySelector('.loader-6').classList.add('done');
+            })
+        }
+    })
+    AFRAME.registerComponent('loader-hiro', {
+        init: function () {
+            this.el.addEventListener('model-loaded', e => {
+                document.querySelector('.loader-hiro').classList.add('done');
             })
         }
     })
@@ -64,42 +76,48 @@
 <script src="./script.js" defer></script>
 
 <body style='margin : 0px; overflow: hidden;'>
-    <div class="loader">
-        <p>Loading...</p>
+    <div class="loader loader-7">
+        <p>Loading 7...</p>
+    </div>
+    <div class="loader loader-6">
+        <p>Loading 6...</p>
+    </div>
+    <div class="loader loader-hiro">
+        <p>Loading hiro...</p>
     </div>
     <!-- embedded -->
     <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
     <a-scene vr-mode-ui="enabled: false"
         arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" embedded>
         <a-assets>
-            <a-asset-item id="animated-asset-7"
+            <a-asset-item id="animated-asset-hiro"
                 src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf">
             </a-asset-item>
             <a-asset-item id="animated-asset-6"
                 src="https://raw.githubusercontent.com/VanDinh11/public-models/master/matilda_scale/scene.gltf">
             </a-asset-item>
-            <a-asset-item id="animated-asset-hiro"
+            <a-asset-item id="animated-asset-7"
                 src="https://raw.githubusercontent.com/VanDinh11/public-models/master/scifi_girl_v.01/scene.gltf">
             </a-asset-item>
             <!-- this can be applied for texture -->
             <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
         </a-assets>
 
-        <a-marker clickhandletest emitevents="true" cursor="rayOrigin: mouse" type='barcode' value='7' id="markerId">
+        <a-marker clickhandletest loader-7 emitevents="true" cursor="rayOrigin: mouse" type='barcode' value='7' id="markerId">
             <a-entity class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7" scale="2 2 2"
                 rotation="0 -90 0">
             </a-entity>
         </a-marker>
 
-        <a-marker preset='custom' type='pattern' url='./patt.hiro'>
-            <a-entity loader animation-mixer gltf-model="#animated-asset-hiro" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
+        <a-marker loader-hiro preset='custom' type='pattern' url='./patt.hiro'>
+            <a-entity animation-mixer gltf-model="#animated-asset-hiro" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
         </a-marker>
 
         <a-marker preset='custom' type='pattern' url='./pattern-p1.patt'>
             <a-box position='0 0.5 0' color="green"></a-box>
         </a-marker>
 
-        <a-marker type='barcode' value='6'>
+        <a-marker loader-6 type='barcode' value='6'>
             <a-entity animation-mixer gltf-model="#animated-asset-6" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
         </a-marker>
 
