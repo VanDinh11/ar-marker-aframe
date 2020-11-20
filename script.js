@@ -1,9 +1,9 @@
-const Abox = document.querySelector('#boxTestClick');
-Abox.addEventListener('click', function () {
-    console.log('xxx');
+// const Abox = document.querySelector('#boxTestClick');
+// Abox.addEventListener('click', function () {
+//     console.log('xxx');
 
-    this.setAttribute('color', 'blue');
-})
+//     this.setAttribute('color', 'blue');
+// })
 
 AFRAME.registerComponent('boxhandle', {
     init: function () {
