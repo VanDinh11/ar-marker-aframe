@@ -54,7 +54,7 @@
                 src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf">
             </a-asset-item>
             <!-- this can be applied for texture -->
-            <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
+            <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
         </a-assets>
 
         <a-marker type='barcode' value='7' id="markerId">
@@ -81,7 +81,6 @@
             smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5" button-marker-handle emitevents="true">
             <!-- important for addEventListener('click'). Notice the '.clickable'-->
             <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable; useWorldCoordinates: true;"></a-entity>
-            <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
             <a-entity id="dinoId" class="clickable"
                 gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
                 scale="5 5 5" position="100 -100 0" rotation="-90 0 0">
