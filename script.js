@@ -81,17 +81,17 @@ AFRAME.registerComponent('button-marker-handle', {
 // });
 
 AFRAME.registerComponent('clickhandletest', {
-    init: function () {
-        console.log('xxxxxxx');
-        const box = document.querySelector('#boxId');
-        var x = box.getAttribute('scale').x;
-        var y = box.getAttribute('scale').y;
-        var z = box.getAttribute('scale').z;
-        box.addEventListener('click', function () {
-            x += 0.1;
-            y += 0.1;
-            z += 0.1;
-            box.setAttribute('scale', x + " " + y + " " + z);
+    init: function (ev, target) {
+        const markerId = document.querySelector('#markerId');
+        const aEntity = document.querySelector('#modelId');
+
+        markerId.addEventListener('click', function() {
+            const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
+            if (aEntity && intersectedElement === aEntity) {
+                const scale = aEntity.getAttribute('scale');
+                Object.keys(scale).forEach((key) => scale[key] = scale[key] + 1);
+                aEntity.setAttribute('scale', scale);
+            }
         })
     }
 })
