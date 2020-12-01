@@ -106,11 +106,12 @@
             </a-asset-item>
             <!-- this can be applied for texture -->
             <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
+            <video id="myvideo" src="./file_example_MP4_480_1_5MG.mp4"></video>
         </a-assets>
 
         <!-- <a-light type="ambient" color="blue" position="0 5 0"></a-light> -->
 
-        <a-box color="red" class="boxclass" boxhandle position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box>
+        <!-- <a-box color="red" class="boxclass" boxhandle position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
 
         <a-marker loader-7 type='barcode' value='7' id="markerId">
             <!-- <a-entity light="type:directional; castShadow:true;" position="1 1 1"></a-entity> -->
@@ -128,7 +129,8 @@
         </a-marker>
 
         <a-marker loader-6 type='barcode' value='6'>
-            <a-entity modelhandle animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity>
+            <a-video src="#myvideo" width="16" height="9" position="0 0 -20"></a-video>
+            <!-- <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity> -->
         </a-marker>
 
         <!-- add look-controls to move camera -->
