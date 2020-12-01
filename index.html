@@ -65,13 +65,13 @@
             })
         }
     })
-    // AFRAME.registerComponent('loader-6', {
-    //     init: function () {
-    //         this.el.addEventListener('model-loaded', e => {
-    //             document.querySelector('.loader-6').classList.add('done');
-    //         })
-    //     }
-    // })
+    AFRAME.registerComponent('loader-6', {
+        init: function () {
+            this.el.addEventListener('model-loaded', e => {
+                document.querySelector('.loader-6').classList.add('done');
+            })
+        }
+    })
     AFRAME.registerComponent('loader-hiro', {
         init: function () {
             this.el.addEventListener('model-loaded', e => {
@@ -86,9 +86,9 @@
     <div class="loader loader-7">
         <p style="margin-top: 30px;">Loading 7...</p>
     </div>
-    <!-- <div class="loader loader-6">
+    <div class="loader loader-6">
         <p style="margin-top: 50px;">Loading 6...</p>
-    </div> -->
+    </div>
     <div class="loader loader-hiro">
         <p style="margin-top: 70px;">Loading hiro...</p>
     </div>
@@ -154,8 +154,7 @@
             <a-box position='0 0.5 0' color="green"></a-box>
         </a-marker>
 
-        <!-- loader-6 -->
-        <a-marker type='barcode' value='6'>
+        <a-marker loader-6 type='barcode' value='6'>
             <!-- <a-video src="#myvideo" position="0 0 -1"></a-video> -->
             <!-- <a-entity shadow="cast:true; receive:true">
                 
