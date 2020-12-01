@@ -118,15 +118,32 @@
 
         <!-- <a-light type="ambient" color="blue" position="0 5 0"></a-light> -->
 
-        <!-- <a-box color="red" class="boxclass" boxhandle position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
+        <!-- Default light:  -->
+        <!-- ambient light: (light overlay all screen) -->
+        <!-- <a-entity light="type: ambient; color: #bbb;"></a-entity> -->
+        <!-- Direction light: -->
+        <!-- <a-entity light="type: directional; color: #fff; intensity: 0.6; castShadow: true;" 
+                  position="-0.5 1 1"></a-entity> -->
+        <!-- EX: position="10000 0 0": tu phai qua -->
+        <!-- --------------------------- -->
+
+        <!-- Custom light | ambient: -->
+        <a-entity light="type: ambient; intensity: 0.8; color: #bbb;"></a-entity>
+        <!-- Custom light | point: -->
+        <a-entity light="type: point; intensity: 0.8; distance: 10; castShadow: true;" position="0 2 1.5"></a-entity>
+        <!-- Custom light | spot: -->
+        <a-entity light="type: spot;"></a-entity>
+        
+        <!-- Để cast shadow được thì cần có vật "cast: true" và mặt phẳng "receive: true" -->
+        <!-- <a-box shadow="cast: true;" color="red" class="boxclass" boxhandle position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
 
         <a-marker loader-7 type='barcode' value='7' id="markerId">
-            <a-entity light="type:directional; castShadow:true;" position="1 1 1">
-                <a-entity modelhandle class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7" scale="2 2 2"
+            <!-- <a-entity light="type:directional; castShadow:true;" position="1 1 1">
+                
+            </a-entity> -->
+            <a-entity modelhandle class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7" scale="2 2 2"
                 rotation="0 -90 0">
             </a-entity>
-            </a-entity>
-            
         </a-marker>
 
         <a-marker loader-hiro preset='custom' type='pattern' url='./patt.hiro'>
