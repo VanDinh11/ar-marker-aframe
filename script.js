@@ -7,10 +7,16 @@
 
 AFRAME.registerComponent('boxhandle', {
     init: function () {
-        console.log('aaaa');
-        const box = document.querySelector('#boxTestClick');
         this.el.addEventListener('click', function () {
             console.log('xxx');
+        })
+    }
+})
+
+AFRAME.registerComponent('modelhandle', {
+    init: function () {
+        this.el.addEventListener('click', function () {
+            alert('aaa');
         })
     }
 })
