@@ -4,6 +4,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!-- iOS has a lot of restrictions on playing videos in the browser. To play an inline video texture, add this: -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <!-- style for the loader -->
     <style>
         .arjs-loader {
@@ -126,7 +128,7 @@
         </a-marker>
 
         <a-marker loader-6 type='barcode' value='6'>
-            <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity>
+            <a-entity modelhandle animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity>
         </a-marker>
 
         <!-- add look-controls to move camera -->
