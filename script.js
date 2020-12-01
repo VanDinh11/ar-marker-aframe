@@ -16,7 +16,7 @@ AFRAME.registerComponent('boxhandle', {
 AFRAME.registerComponent('modelhandle', {
     init: function () {
         this.el.addEventListener('click', function () {
-            alert('aaa');
+            // alert('aaa');
         })
     }
 })
