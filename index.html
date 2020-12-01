@@ -88,6 +88,7 @@
     </div>
     <!-- embedded -->
     <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+    <!-- renderer="logarithmicDepthBuffer: true;" add this to fix jittering (broken texture) -->
     <a-scene vr-mode-ui="enabled: false"
         renderer="logarithmicDepthBuffer: true;"
         arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" embedded>
@@ -105,28 +106,32 @@
             <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
         </a-assets>
 
-        <!-- <a-box color="red" position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
+        
 
-        <a-marker clickhandletest loader-7 emitevents="true" cursor="rayOrigin: mouse" type='barcode' value='7'
+        <a-entity camera>
+
+            <!-- <a-box color="red" position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
+
+            <a-marker clickhandletest loader-7 emitevents="true" cursor="rayOrigin: mouse" type='barcode' value='7'
             id="markerId">
-            <a-entity class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7" scale="2 2 2"
-                rotation="0 -90 0">
-            </a-entity>
-        </a-marker>
+                <a-entity class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7" scale="2 2 2"
+                    rotation="0 -90 0">
+                </a-entity>
+            </a-marker>
 
-        <a-marker loader-hiro preset='custom' type='pattern' url='./patt.hiro'>
-            <a-entity animation-mixer gltf-model="#animated-asset-hiro" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
-        </a-marker>
+            <a-marker loader-hiro preset='custom' type='pattern' url='./patt.hiro'>
+                <a-entity animation-mixer gltf-model="#animated-asset-hiro" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
+            </a-marker>
 
-        <a-marker preset='custom' type='pattern' url='./pattern-p1.patt'>
-            <a-box position='0 0.5 0' color="green"></a-box>
-        </a-marker>
+            <a-marker preset='custom' type='pattern' url='./pattern-p1.patt'>
+                <a-box position='0 0.5 0' color="green"></a-box>
+            </a-marker>
 
-        <a-marker loader-6 type='barcode' value='6'>
-            <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity>
-        </a-marker>
+            <a-marker loader-6 type='barcode' value='6'>
+                <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity>
+            </a-marker>
 
-        <a-entity camera></a-entity>
+        </a-entity>
 
     </a-scene>
 
