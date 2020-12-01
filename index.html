@@ -25,7 +25,7 @@
             color: white;
         }
 
-        .loader{
+        .loader {
             position: absolute;
             top: 0;
             left: 0;
@@ -34,10 +34,12 @@
             background: #3333333d;
             z-index: 99;
         }
-        .loader.done{
+
+        .loader.done {
             display: none;
         }
-        .loader p{
+
+        .loader p {
             text-align: center;
             color: #fff;
         }
@@ -102,7 +104,10 @@
             <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
         </a-assets>
 
-        <a-marker clickhandletest loader-7 emitevents="true" cursor="rayOrigin: mouse" type='barcode' value='7' id="markerId">
+        <!-- <a-box color="red" position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
+
+        <a-marker clickhandletest loader-7 emitevents="true" cursor="rayOrigin: mouse" type='barcode' value='7'
+            id="markerId">
             <a-entity class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7" scale="2 2 2"
                 rotation="0 -90 0">
             </a-entity>
@@ -123,6 +128,15 @@
         <a-entity camera></a-entity>
 
     </a-scene>
+
+
+    <script>
+        // Workaround for an AR.js bug (https://github.com/jeromeetienne/AR.js/issues/410)
+        const sceneEl = document.querySelector('a-scene');
+        sceneEl.addEventListener('loaded', () => {
+            sceneEl.camera = new THREE.PerspectiveCamera();
+        });
+    </script>
 </body>
 
 </html>
@@ -130,3 +144,11 @@
 <!-- 
     position co the relative duoc giong nhu trong css
  -->
+
+<!-- <a-entity camera> 
+<a-entity position="this position is relative to parent"></a-entity>
+</a-entity>  -->
+
+<!-- 
+The position of your fixed entity is relative to the position of parent (camera). Adjust this position carefully, put 0 0 0 to verify your entity is there.
+-->
