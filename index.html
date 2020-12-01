@@ -90,7 +90,7 @@
     <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
     <!-- renderer="logarithmicDepthBuffer: true;" add this to fix jittering (broken texture) -->
     <a-scene vr-mode-ui="enabled: false"
-        renderer="logarithmicDepthBuffer: true; sortObjects: true; antialias: true; colorManagement: true;"
+        renderer="logarithmicDepthBuffer: true; sortObjects: true; antialias: true; physicallyCorrectLights: true;"
         arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" embedded>
         <a-assets>
             <a-asset-item id="animated-asset-hiro"
