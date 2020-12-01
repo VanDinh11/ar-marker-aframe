@@ -137,8 +137,10 @@
 
         <!-- loader-6 -->
         <a-marker type='barcode' value='6'>
-            <a-video src="#myvideo" width="8" height="4.5" position="0 0 -1"></a-video>
-            <!-- <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity> -->
+            <!-- <a-video src="#myvideo" position="0 0 -1"></a-video> -->
+            <a-entity shadow="cast:true; receive:true">
+                <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity>
+            </a-entity>
         </a-marker>
 
         <!-- add look-controls to move camera -->
