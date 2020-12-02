@@ -79,6 +79,13 @@
             })
         }
     })
+    AFRAME.registerComponent('shadow-material', {
+        init: function() {
+            this.material = new THREE.ShadowMaterial();
+            this.el.getObject3D('mesh').material = this.material;
+            this.material.opacity = 0.3;
+        }
+    })
 </script>
 <script src="./script.js" defer></script>
 
@@ -97,10 +104,8 @@
     <!-- renderer="logarithmicDepthBuffer: true;" add this to fix jittering (broken texture) -->
     <a-scene vr-mode-ui="enabled: false"
         renderer="logarithmicDepthBuffer: true; sortObjects: true; antialias: true; physicallyCorrectLights: true;"
-        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" 
-        embedded
-        loading-screen="dotsColor: red; backgroundColor: black"
-    >
+        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" embedded
+        loading-screen="dotsColor: red; backgroundColor: black">
         <a-assets>
             <a-asset-item id="animated-asset-hiro"
                 src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf">
@@ -113,7 +118,8 @@
             </a-asset-item>
             <!-- this can be applied for texture -->
             <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
-            <video id="myvideo" autoplay loop="true" src="./file_example_MP4_480_1_5MG.mp4" webkit-playsinline playsinline preload="auto" crossorigin ></video>
+            <video id="myvideo" autoplay loop="true" src="./file_example_MP4_480_1_5MG.mp4" webkit-playsinline
+                playsinline preload="auto" crossorigin></video>
         </a-assets>
 
         <!-- <a-light type="ambient" color="blue" position="0 5 0"></a-light> -->
@@ -128,21 +134,21 @@
         <!-- --------------------------- -->
 
         <!-- Custom light | ambient: -->
-        <a-entity light="type: ambient; intensity: 0.8; color: #bbb;"></a-entity>
+        <!-- <a-entity light="type: ambient; intensity: 0.8; color: #bbb;"></a-entity> -->
         <!-- Custom light | point: -->
-        <a-entity light="type: point; intensity: 0.8; distance: 10; castShadow: true;" position="0 2 1.5"></a-entity>
+        <a-entity light="type: point; intensity: 0.8; distance: 5; castShadow: true; penumbra: 5.5; decay: 0.1;" position="0 10 0"></a-entity>
         <!-- Custom light | spot: -->
-        <a-entity light="type: spot;"></a-entity>
-        
-        <!-- Để cast shadow được thì cần có vật "cast: true" và mặt phẳng "receive: true" -->
+        <!-- <a-entity light="type: spot; penumbra: 0.1;"></a-entity> -->
+
+        <!-- Để cast shadow được thì cần có: nguồn sáng, vật "cast: true" và mặt phẳng "receive: true" -->
         <!-- <a-box shadow="cast: true;" color="red" class="boxclass" boxhandle position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
 
         <a-marker loader-7 type='barcode' value='7' id="markerId">
             <!-- <a-entity light="type:directional; castShadow:true;" position="1 1 1">
                 
             </a-entity> -->
-            <a-entity modelhandle class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7" scale="2 2 2"
-                rotation="0 -90 0">
+            <a-entity modelhandle class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7"
+                scale="2 2 2" rotation="0 -90 0">
             </a-entity>
         </a-marker>
 
@@ -156,10 +162,14 @@
 
         <a-marker loader-6 type='barcode' value='6'>
             <!-- <a-video src="#myvideo" position="0 0 -1"></a-video> -->
-            <!-- <a-entity shadow="cast:true; receive:true">
-                
-            </a-entity> -->
-            <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0"></a-entity>
+            <a-entity>
+                <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0" shadow="cast: true"></a-entity>
+                <!-- <a-entity geometry="primitive: plane"
+                          material="color: white; opacity: 0.3;"> -->
+                <a-plane width="20" height="20" position="0 0 0" rotation="-90 0 0" color="white"
+                    shadow="receive: true" shadow-material></a-plane>
+            </a-entity>
+
         </a-marker>
 
         <!-- add look-controls to move camera -->
