@@ -136,21 +136,14 @@
         <!-- Custom light | ambient: -->
         <!-- <a-entity light="type: ambient; intensity: 0.8; color: #bbb;"></a-entity> -->
         <!-- Custom light | point: -->
-        <a-entity light="type: point; intensity: 0.8; distance: 5; castShadow: true; penumbra: 100;" position="0 10 0"></a-entity>
+        <a-entity light="type: point; intensity: 0.8; distance: 5; castShadow: true; penumbra: 0.5; decay: 2;" position="0 10 0"></a-entity>
         <!-- Custom light | spot: -->
         <!-- <a-entity light="type: spot; penumbra: 0.1;"></a-entity> -->
 
         <!-- Để cast shadow được thì cần có: nguồn sáng, vật "cast: true" và mặt phẳng "receive: true" -->
         <!-- <a-box shadow="cast: true;" color="red" class="boxclass" boxhandle position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
 
-        <a-marker loader-7 type='barcode' value='7' id="markerId">
-            <!-- <a-entity light="type:directional; castShadow:true;" position="1 1 1">
-                
-            </a-entity> -->
-            <a-entity modelhandle class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7"
-                scale="2 2 2" rotation="0 -90 0">
-            </a-entity>
-        </a-marker>
+        
 
         <a-marker loader-hiro preset='custom' type='pattern' url='./patt.hiro'>
             <a-entity animation-mixer gltf-model="#animated-asset-hiro" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
@@ -158,6 +151,17 @@
 
         <a-marker preset='custom' type='pattern' url='./pattern-p1.patt'>
             <a-box position='0 0.5 0' color="green"></a-box>
+        </a-marker>
+
+        <a-marker loader-7 type='barcode' value='7' id="markerId">
+            <a-entity>
+                <a-entity modelhandle class="clickableModel" id="modelId" animation-mixer gltf-model="#animated-asset-7" shadow="cast: true"
+                    scale="2 2 2" rotation="0 -90 0">
+                </a-entity>
+                <a-plane width="20" height="20" position="0 0 0" rotation="-90 0 0" color="white"
+                    shadow="receive: true" shadow-material></a-plane>
+            </a-entity>
+            
         </a-marker>
 
         <a-marker loader-6 type='barcode' value='6'>
