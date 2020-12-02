@@ -83,7 +83,7 @@
         init: function() {
             this.material = new THREE.ShadowMaterial();
             this.el.getObject3D('mesh').material = this.material;
-            this.material.opacity = 0.3;
+            this.material.opacity = 0.2;
         }
     })
 </script>
@@ -136,7 +136,7 @@
         <!-- Custom light | ambient: -->
         <!-- <a-entity light="type: ambient; intensity: 0.8; color: #bbb;"></a-entity> -->
         <!-- Custom light | point: -->
-        <a-entity light="type: point; intensity: 0.8; distance: 5; castShadow: true; penumbra: 5.5; decay: 0.1;" position="0 10 0"></a-entity>
+        <a-entity light="type: point; intensity: 0.8; distance: 5; castShadow: true; penumbra: 100;" position="0 10 0"></a-entity>
         <!-- Custom light | spot: -->
         <!-- <a-entity light="type: spot; penumbra: 0.1;"></a-entity> -->
 
@@ -214,3 +214,7 @@
 <!-- 
 The position of your fixed entity is relative to the position of parent (camera). Adjust this position carefully, put 0 0 0 to verify your entity is there.
 -->
+
+<!-- 
+Trong một entity thì width và height thuộc về geometry
+ -->
