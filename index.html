@@ -79,7 +79,14 @@
             })
         }
     })
-    AFRAME.registerComponent('shadow-material', {
+    AFRAME.registerComponent('shadow-material-6', {
+        init: function() {
+            this.material = new THREE.ShadowMaterial();
+            this.el.getObject3D('mesh').material = this.material;
+            this.material.opacity = 0.2;
+        }
+    })
+    AFRAME.registerComponent('shadow-material-7', {
         init: function() {
             this.material = new THREE.ShadowMaterial();
             this.el.getObject3D('mesh').material = this.material;
@@ -159,7 +166,7 @@
                     scale="2 2 2" rotation="0 -90 0">
                 </a-entity>
                 <a-plane width="20" height="20" position="0 0 0" rotation="-90 0 0" color="white"
-                    shadow="receive: true" shadow-material></a-plane>
+                    shadow="receive: true" shadow-material-7></a-plane>
             </a-entity>
             
         </a-marker>
@@ -171,7 +178,7 @@
                 <!-- <a-entity geometry="primitive: plane"
                           material="color: white; opacity: 0.3;"> -->
                 <a-plane width="20" height="20" position="0 0 0" rotation="-90 0 0" color="white"
-                    shadow="receive: true" shadow-material></a-plane>
+                    shadow="receive: true" shadow-material-6></a-plane>
             </a-entity>
 
         </a-marker>
