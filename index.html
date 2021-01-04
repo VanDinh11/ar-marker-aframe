@@ -4,9 +4,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <!-- iOS has a lot of restrictions on playing videos in the browser. To play an inline video texture, add this: -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- style for the loader -->
     <style>
         .arjs-loader {
             height: 100%;
@@ -51,8 +49,6 @@
         }
     </style>
 </head>
-<!-- BE CAREFULL: click event on version 1.0.x does't work -->
-<!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
@@ -98,17 +94,14 @@
 
 <body style='margin : 0px; overflow: hidden;'>
     <div class="loader loader-7">
-        <p style="margin-top: 30px;">Loading model 7...</p>
+        <p style="margin-top: 30px;">Loading model 1...</p>
     </div>
     <div class="loader loader-6">
-        <p style="margin-top: 50px;">Loading model 6...</p>
+        <p style="margin-top: 50px;">Loading model 2...</p>
     </div>
     <div class="loader loader-hiro">
         <p style="margin-top: 70px;">Loading hiro...</p>
     </div>
-    <!-- embedded -->
-    <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
-    <!-- renderer="logarithmicDepthBuffer: true;" add this to fix jittering (broken texture) -->
     <a-scene vr-mode-ui="enabled: false"
         renderer="logarithmicDepthBuffer: true; sortObjects: true; antialias: true; physicallyCorrectLights: true;"
         arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" embedded
@@ -123,32 +116,10 @@
             <a-asset-item id="animated-asset-7"
                 src="https://raw.githubusercontent.com/VanDinh11/public-models/master/dancing_girl_from_fire_emblem_if/scene.gltf">
             </a-asset-item>
-            <!-- this can be applied for texture -->
             <img id="boxTexture" crossorigin src="https://i.imgur.com/mYmmbrp.jpg">
-            <video id="myvideo" autoplay loop="true" src="./file_example_MP4_480_1_5MG.mp4" webkit-playsinline
-                playsinline preload="auto" crossorigin></video>
         </a-assets>
 
-        <!-- <a-light type="ambient" color="blue" position="0 5 0"></a-light> -->
-
-        <!-- Default light:  -->
-        <!-- ambient light: (light overlay all screen) -->
-        <!-- <a-entity light="type: ambient; color: #bbb;"></a-entity> -->
-        <!-- Direction light: -->
-        <!-- <a-entity light="type: directional; color: #fff; intensity: 0.6; castShadow: true;" 
-                  position="-0.5 1 1"></a-entity> -->
-        <!-- EX: position="10000 0 0": tu phai qua -->
-        <!-- --------------------------- -->
-
-        <!-- Custom light | ambient: -->
-        <!-- <a-entity light="type: ambient; intensity: 0.8; color: #bbb;"></a-entity> -->
-        <!-- Custom light | point: -->
         <a-entity light="type: point; intensity: 0.8; distance: 5; castShadow: true; penumbra: 0.5; decay: 2;" position="0 10 0"></a-entity>
-        <!-- Custom light | spot: -->
-        <!-- <a-entity light="type: spot; penumbra: 0.1;"></a-entity> -->
-
-        <!-- Để cast shadow được thì cần có: nguồn sáng, vật "cast: true" và mặt phẳng "receive: true" -->
-        <!-- <a-box shadow="cast: true;" color="red" class="boxclass" boxhandle position="0 0 -10" rotation="0 45 45" scale="0.5 0.5 0.5"></a-box> -->
 
         
 
@@ -172,60 +143,19 @@
         </a-marker>
 
         <a-marker loader-6 type='barcode' value='6'>
-            <!-- <a-video src="#myvideo" position="0 0 -1"></a-video> -->
             <a-entity>
                 <a-entity animation-mixer gltf-model="#animated-asset-6" scale="2 2 2" rotation="0 0 0" shadow="cast: true"></a-entity>
-                <!-- <a-entity geometry="primitive: plane"
-                          material="color: white; opacity: 0.3;"> -->
                 <a-plane width="20" height="20" position="0 0 0" rotation="-90 0 0" color="white"
                     shadow="receive: true" shadow-material-6></a-plane>
             </a-entity>
 
         </a-marker>
 
-        <!-- add look-controls to move camera -->
         <a-entity camera>
-            <!-- <a-entity cursor="fuse: true; fuseTimeout: 500"
-                position="0 0 -1"
-                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                material="color: black; shader: flat">
-            </a-entity> -->
-            <!-- <a-cursor></a-cursor> -->
-
-            <!-- edit cursor="rayOrigin: mouse;" to enable global click -->
-            <!-- <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .boxclass;"></a-entity> -->
             <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .clickableModel;"></a-entity>
         </a-entity>
 
     </a-scene>
-
-
-    <script>
-        // Workaround for an AR.js bug (https://github.com/jeromeetienne/AR.js/issues/410)
-        // const sceneEl = document.querySelector('a-scene');
-        // sceneEl.addEventListener('loaded', () => {
-        //     var newCamera = new THREE.PerspectiveCamera();
-        //     newCamera.near = 1;
-        //     newCamera.far = 100;
-        //     sceneEl.camera = newCamera;
-        // });
-    </script>
 </body>
 
 </html>
-
-<!-- 
-    position co the relative duoc giong nhu trong css
- -->
-
-<!-- <a-entity camera> 
-<a-entity position="this position is relative to parent"></a-entity>
-</a-entity>  -->
-
-<!-- 
-The position of your fixed entity is relative to the position of parent (camera). Adjust this position carefully, put 0 0 0 to verify your entity is there.
--->
-
-<!-- 
-Trong một entity thì width và height thuộc về geometry
- -->
